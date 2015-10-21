@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li><i class="glyphicon glyphicon-align-justify"></i></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registo", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            <ul class="menu vertical right">
+                <li class="current">
+                    <a href=""><i class="icon-align-justify"></i></a>
+                    <ul>
+                        <li><a href="">Manuais</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Lista Geral", "Index", "manuais")</li>
+                                    <li>@Html.ActionLink("Inserir Novo", "Create", "manuais")</li>
+                                </ul>
+                        </li>
+                        <li>
+                            <a href="">Catalogo</a>
+                            <ul>
+                                <li>@Html.ActionLink("Catalogo Manuais Ano/Disciplina", "CatalogoAnoDisciplina", "Catalogo")</li>
+                                <li>@Html.ActionLink("Catalogo Manuais Por Estabelecimento", "CatalogoEstabelecimentos", "Catalogo")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Utilizador</a>
+                            <ul>
+                                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                                <li>@Html.ActionLink("Inserir Novo", "Register", "Account")</li>
+                                <li>@Html.ActionLink("Mensagens", "Index", "Mensagens")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+}

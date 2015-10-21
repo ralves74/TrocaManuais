@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Estab">
+  <DataContextMoniker Name="/EstabDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b83dc002-9257-49ca-99ce-d35e86443739" absoluteBounds="0.5, 1.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/EstabDataContext/estabelecimento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ba45616-de68-4549-9a82-4ac63e000a6b" absoluteBounds="0.515, 1.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d1e30ea-bb00-4fb5-883f-df01f28a5787" absoluteBounds="3.125, 2, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/EstabDataContext/Agrupamento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24c64a04-e9bd-4d0e-8635-0c22bc925b73" absoluteBounds="3.1399999999999997, 2.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.125 : 2.59699625651042); (2.5 : 2.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/EstabDataContext/Agrupamento/Agrupamento_estabelecimento" />
+      <nodes>
+        <classShapeMoniker Id="6d1e30ea-bb00-4fb5-883f-df01f28a5787" />
+        <classShapeMoniker Id="b83dc002-9257-49ca-99ce-d35e86443739" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

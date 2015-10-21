@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.Mensagens>
+
+@{
+    ViewBag.Title = "Index";
+   
+}
+
+<h2>Index</h2>
+
+<p>
+</p>
+<table class="table table-striped table-bordered" cellspacing="0">
+    <tr>
+        <th>
+            Utilizador
+        </th>
+        <th>
+            Data
+        </th>
+        <th>
+            Mensagem
+        </th>
+        <th>
+            Lida
+        </th>
+        <th>
+            Responder
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NickEnviado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mensagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lido)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdMR }, new { @class = "icon-play" })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.IdMR }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdMR })
+            </td>
+        </tr>
+    }
+
+</table>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th><button type="button" class="medium orange"><i class="icon-envelope"></i> Todas </button></th>
+        <th><button type="button" class="medium red"><i class="icon-bell"></i> Novas </button></th>
+        <th><button type="button" class="medium blue"><i class=" icon-signout"></i> Enviadas </button></th>
+    </tr>
+
+</table>

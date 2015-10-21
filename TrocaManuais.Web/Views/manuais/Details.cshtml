@@ -1,0 +1,76 @@
+﻿@model TrocaManuais.Web.Models.manuais
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.titulo)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row">
+            <div class="span4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.foto)
+                </dt>
+                <dd>
+                    <a href="@Url.Content(Model.foto)"><img src="@Url.Content(Model.foto)" alt="Image" height="300" width="200" /></a>
+               </dd>
+
+            </div>
+            <div class="span4">
+                <dt>
+                    <strong>ISBN : </strong> 
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ISBN)
+                </dd>
+                <p> </p>
+                <dt>
+                    <strong>Autores</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Autores)
+                </dd>
+                <p> </p>
+                <dt>
+                    <strong>Ano</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AnosEscolares.Ano)
+                </dd>
+                <p> </p>
+                <dt>
+                    <strong>Disciplina</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Disciplinas.disciplina)
+                </dd>
+                <p> </p>
+                <dt>
+                    <strong>Editora</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Editoras.Editora)
+                </dd>
+                <p> </p>
+                <dt>
+                 <p> </p>
+                </dt>
+                <dd>
+                    <button type="button" class="medium orange" onclick="location.href='@Url.Action("CatalogoManuaisStock", "Catalogo")'"><i class="icon-undo">Procura Manual</i></button>
+                    
+                </dd>
+            </div>
+         </div>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

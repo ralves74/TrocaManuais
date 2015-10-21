@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TrocaManuaisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agrupamentos">
+          <Key>
+            <PropertyRef Name="Codagrupamento" />
+          </Key>
+          <Property Name="Codagrupamento" Type="int" Nullable="false" />
+          <Property Name="agrupamento" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="ALetivo">
+          <Key>
+            <PropertyRef Name="Aletivo" />
+          </Key>
+          <Property Name="Aletivo" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnosEscolares">
+          <Key>
+            <PropertyRef Name="idAEscola" />
+          </Key>
+          <Property Name="Escalao" Type="nvarchar" MaxLength="60" />
+          <Property Name="idAEscola" Type="int" Nullable="false" />
+          <Property Name="Ano" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CPostal">
+          <Key>
+            <PropertyRef Name="cp4" />
+            <PropertyRef Name="cp3" />
+          </Key>
+          <Property Name="cp4" Type="int" Nullable="false" />
+          <Property Name="cp3" Type="int" Nullable="false" />
+          <Property Name="Freguesia" Type="varchar" MaxLength="60" />
+          <Property Name="Concelho" Type="varchar" MaxLength="60" />
+          <Property Name="Distrito" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Disciplinas">
+          <Key>
+            <PropertyRef Name="disciplina" />
+          </Key>
+          <Property Name="disciplina" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Editoras">
+          <Key>
+            <PropertyRef Name="Editora" />
+          </Key>
+          <Property Name="Editora" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Escaloes">
+          <Key>
+            <PropertyRef Name="Escalao" />
+          </Key>
+          <Property Name="Escalao" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estabelecimentos">
+          <Key>
+            <PropertyRef Name="idestab" />
+          </Key>
+          <Property Name="idestab" Type="int" Nullable="false" />
+          <Property Name="design" Type="nvarchar" MaxLength="100" />
+          <Property Name="morada" Type="nvarchar" MaxLength="60" />
+          <Property Name="local" Type="nvarchar" MaxLength="60" />
+          <Property Name="telefone" Type="nvarchar" MaxLength="20" />
+          <Property Name="fax" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="url" Type="nvarchar" MaxLength="100" />
+          <Property Name="CodAgrupamento" Type="int" />
+          <Property Name="Sede" Type="bit" />
+          <Property Name="cp4" Type="int" />
+          <Property Name="cp3" Type="int" />
+        </EntityType>
+        <EntityType Name="manuais">
+          <Key>
+            <PropertyRef Name="Editora" />
+            <PropertyRef Name="disciplina" />
+            <PropertyRef Name="idmanual" />
+          </Key>
+          <Property Name="Editora" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="disciplina" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="idmanual" Type="int" Nullable="false" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="13" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="60" />
+          <Property Name="Autores" Type="nvarchar" MaxLength="100" />
+          <Property Name="idAescolar" Type="int" />
+          <Property Name="foto" Type="image" />
+          <Property Name="idAEscola" Type="int" />
+          <Property Name="Inactivo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Mensagens">
+          <Key>
+            <PropertyRef Name="IdMR" />
+          </Key>
+          <Property Name="IdMR" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Mensagem" Type="varchar" MaxLength="200" />
+          <Property Name="Nickname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="NickEnviado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Lido" Type="bit" />
+        </EntityType>
+        <EntityType Name="mestab">
+          <Key>
+            <PropertyRef Name="idMestab" />
+          </Key>
+          <Property Name="idMestab" Type="int" Nullable="false" />
+          <Property Name="Aletivo" Type="nvarchar" MaxLength="9" />
+          <Property Name="idmanual" Type="int" />
+          <Property Name="idestab" Type="int" />
+          <Property Name="idaescola" Type="int" />
+          <Property Name="disciplina" Type="nvarchar" MaxLength="60" />
+          <Property Name="Editora" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="idStock" />
+          </Key>
+          <Property Name="idStock" Type="int" Nullable="false" />
+          <Property Name="idManual" Type="int" />
+          <Property Name="Qtt" Type="int" />
+          <Property Name="Nick" Type="varchar" MaxLength="20" />
+          <Property Name="disciplina" Type="nvarchar" MaxLength="60" />
+          <Property Name="Editora" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Nick" />
+          </Key>
+          <Property Name="Nick" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="20" />
+          <Property Name="nome" Type="nvarchar" MaxLength="60" />
+          <Property Name="BLivro" Type="bit" />
+          <Property Name="cp4" Type="int" />
+          <Property Name="cp3" Type="int" />
+        </EntityType>
+        <Association Name="Agrupamentos_estabelecimentos_FK1">
+          <End Role="Agrupamentos" Type="Self.Agrupamentos" Multiplicity="0..1" />
+          <End Role="estabelecimentos" Type="Self.estabelecimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agrupamentos">
+              <PropertyRef Name="Codagrupamento" />
+            </Principal>
+            <Dependent Role="estabelecimentos">
+              <PropertyRef Name="CodAgrupamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ALetivo_mestab_FK1">
+          <End Role="ALetivo" Type="Self.ALetivo" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALetivo">
+              <PropertyRef Name="Aletivo" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="Aletivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AnosEscolares_manuais_FK1">
+          <End Role="AnosEscolares" Type="Self.AnosEscolares" Multiplicity="0..1" />
+          <End Role="manuais" Type="Self.manuais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnosEscolares">
+              <PropertyRef Name="idAEscola" />
+            </Principal>
+            <Dependent Role="manuais">
+              <PropertyRef Name="idAEscola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AnosEscolares_mestab_FK1">
+          <End Role="AnosEscolares" Type="Self.AnosEscolares" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnosEscolares">
+              <PropertyRef Name="idAEscola" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="idaescola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CPostal_estabelecimentos_FK1">
+          <End Role="CPostal" Type="Self.CPostal" Multiplicity="0..1" />
+          <End Role="estabelecimentos" Type="Self.estabelecimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CPostal">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Principal>
+            <Dependent Role="estabelecimentos">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CPostal_users_FK1">
+          <End Role="CPostal" Type="Self.CPostal" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CPostal">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Disciplinas_manuais_FK1">
+          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
+          <End Role="manuais" Type="Self.manuais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplinas">
+              <PropertyRef Name="disciplina" />
+            </Principal>
+            <Dependent Role="manuais">
+              <PropertyRef Name="disciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Disciplinas_mestab_FK1">
+          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplinas">
+              <PropertyRef Name="disciplina" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="disciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Editoras_manuais_FK1">
+          <End Role="Editoras" Type="Self.Editoras" Multiplicity="1" />
+          <End Role="manuais" Type="Self.manuais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editoras">
+              <PropertyRef Name="Editora" />
+            </Principal>
+            <Dependent Role="manuais">
+              <PropertyRef Name="Editora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Escaloes_AnosEscolares_FK1">
+          <End Role="Escaloes" Type="Self.Escaloes" Multiplicity="0..1" />
+          <End Role="AnosEscolares" Type="Self.AnosEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escaloes">
+              <PropertyRef Name="Escalao" />
+            </Principal>
+            <Dependent Role="AnosEscolares">
+              <PropertyRef Name="Escalao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="estabelecimentos_mestab_FK1">
+          <End Role="estabelecimentos" Type="Self.estabelecimentos" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estabelecimentos">
+              <PropertyRef Name="idestab" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="idestab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manuais_mestab_FK1">
+          <End Role="manuais" Type="Self.manuais" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manuais">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idmanual" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idmanual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manuais_stock_FK1">
+          <End Role="manuais" Type="Self.manuais" Multiplicity="0..1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manuais">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idmanual" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idManual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_Mensagens_FK1">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="Mensagens" Type="Self.Mensagens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Nick" />
+            </Principal>
+            <Dependent Role="Mensagens">
+              <PropertyRef Name="Nickname" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_stock_FK1">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Nick" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="Nick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TrocaManuaisModelStoreContainer">
+          <EntitySet Name="Agrupamentos" EntityType="Self.Agrupamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ALetivo" EntityType="Self.ALetivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnosEscolares" EntityType="Self.AnosEscolares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPostal" EntityType="Self.CPostal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Editoras" EntityType="Self.Editoras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escaloes" EntityType="Self.Escaloes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estabelecimentos" EntityType="Self.estabelecimentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manuais" EntityType="Self.manuais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mensagens" EntityType="Self.Mensagens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mestab" EntityType="Self.mestab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stock" EntityType="Self.stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Agrupamentos_estabelecimentos_FK1" Association="Self.Agrupamentos_estabelecimentos_FK1">
+            <End Role="Agrupamentos" EntitySet="Agrupamentos" />
+            <End Role="estabelecimentos" EntitySet="estabelecimentos" />
+          </AssociationSet>
+          <AssociationSet Name="ALetivo_mestab_FK1" Association="Self.ALetivo_mestab_FK1">
+            <End Role="ALetivo" EntitySet="ALetivo" />
+            <End Role="mestab" EntitySet="mestab" />
+          </AssociationSet>
+          <AssociationSet Name="AnosEscolares_manuais_FK1" Association="Self.AnosEscolares_manuais_FK1">
+            <End Role="AnosEscolares" EntitySet="AnosEscolares" />
+            <End Role="manuais" EntitySet="manuais" />
+          </AssociationSet>
+          <AssociationSet Name="AnosEscolares_mestab_FK1" Association="Self.AnosEscolares_mestab_FK1">
+            <End Role="AnosEscolares" EntitySet="AnosEscolares" />
+            <End Role="mestab" EntitySet="mestab" />
+          </AssociationSet>
+          <AssociationSet Name="CPostal_estabelecimentos_FK1" Association="Self.CPostal_estabelecimentos_FK1">
+            <End Role="CPostal" EntitySet="CPostal" />
+            <End Role="estabelecimentos" EntitySet="estabelecimentos" />
+          </AssociationSet>
+          <AssociationSet Name="CPostal_users_FK1" Association="Self.CPostal_users_FK1">
+            <End Role="CPostal" EntitySet="CPostal" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="Disciplinas_manuais_FK1" Association="Self.Disciplinas_manuais_FK1">
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+            <End Role="manuais" EntitySet="manuais" />
+          </AssociationSet>
+          <AssociationSet Name="Disciplinas_mestab_FK1" Association="Self.Disciplinas_mestab_FK1">
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+            <End Role="mestab" EntitySet="mestab" />
+          </AssociationSet>
+          <AssociationSet Name="Editoras_manuais_FK1" Association="Self.Editoras_manuais_FK1">
+            <End Role="Editoras" EntitySet="Editoras" />
+            <End Role="manuais" EntitySet="manuais" />
+          </AssociationSet>
+          <AssociationSet Name="Escaloes_AnosEscolares_FK1" Association="Self.Escaloes_AnosEscolares_FK1">
+            <End Role="Escaloes" EntitySet="Escaloes" />
+            <End Role="AnosEscolares" EntitySet="AnosEscolares" />
+          </AssociationSet>
+          <AssociationSet Name="estabelecimentos_mestab_FK1" Association="Self.estabelecimentos_mestab_FK1">
+            <End Role="estabelecimentos" EntitySet="estabelecimentos" />
+            <End Role="mestab" EntitySet="mestab" />
+          </AssociationSet>
+          <AssociationSet Name="manuais_mestab_FK1" Association="Self.manuais_mestab_FK1">
+            <End Role="manuais" EntitySet="manuais" />
+            <End Role="mestab" EntitySet="mestab" />
+          </AssociationSet>
+          <AssociationSet Name="manuais_stock_FK1" Association="Self.manuais_stock_FK1">
+            <End Role="manuais" EntitySet="manuais" />
+            <End Role="stock" EntitySet="stock" />
+          </AssociationSet>
+          <AssociationSet Name="users_Mensagens_FK1" Association="Self.users_Mensagens_FK1">
+            <End Role="users" EntitySet="users" />
+            <End Role="Mensagens" EntitySet="Mensagens" />
+          </AssociationSet>
+          <AssociationSet Name="users_stock_FK1" Association="Self.users_stock_FK1">
+            <End Role="users" EntitySet="users" />
+            <End Role="stock" EntitySet="stock" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrocaManuaisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agrupamento">
+          <Key>
+            <PropertyRef Name="Codagrupamento" />
+          </Key>
+          <Property Name="Codagrupamento" Type="Int32" Nullable="false" />
+          <Property Name="agrupamento1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="estabelecimentos" Relationship="Self.Agrupamentos_estabelecimentos_FK1" FromRole="Agrupamentos" ToRole="estabelecimentos" />
+        </EntityType>
+        <EntityType Name="ALetivo">
+          <Key>
+            <PropertyRef Name="Aletivo1" />
+          </Key>
+          <Property Name="Aletivo1" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="mestabs" Relationship="Self.ALetivo_mestab_FK1" FromRole="ALetivo" ToRole="mestab" />
+        </EntityType>
+        <EntityType Name="AnosEscolare">
+          <Key>
+            <PropertyRef Name="idAEscola" />
+          </Key>
+          <Property Name="Escalao" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="idAEscola" Type="Int32" Nullable="false" />
+          <Property Name="Ano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="manuais" Relationship="Self.AnosEscolares_manuais_FK1" FromRole="AnosEscolares" ToRole="manuais" />
+          <NavigationProperty Name="mestabs" Relationship="Self.AnosEscolares_mestab_FK1" FromRole="AnosEscolares" ToRole="mestab" />
+          <NavigationProperty Name="Escalo" Relationship="Self.Escaloes_AnosEscolares_FK1" FromRole="AnosEscolares" ToRole="Escaloes" />
+        </EntityType>
+        <EntityType Name="CPostal">
+          <Key>
+            <PropertyRef Name="cp4" />
+            <PropertyRef Name="cp3" />
+          </Key>
+          <Property Name="cp4" Type="Int32" Nullable="false" />
+          <Property Name="cp3" Type="Int32" Nullable="false" />
+          <Property Name="Freguesia" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Concelho" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Distrito" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="estabelecimentos" Relationship="Self.CPostal_estabelecimentos_FK1" FromRole="CPostal" ToRole="estabelecimentos" />
+          <NavigationProperty Name="users" Relationship="Self.CPostal_users_FK1" FromRole="CPostal" ToRole="users" />
+        </EntityType>
+        <EntityType Name="Disciplina">
+          <Key>
+            <PropertyRef Name="disciplina1" />
+          </Key>
+          <Property Name="disciplina1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="manuais" Relationship="Self.Disciplinas_manuais_FK1" FromRole="Disciplinas" ToRole="manuais" />
+          <NavigationProperty Name="mestabs" Relationship="Self.Disciplinas_mestab_FK1" FromRole="Disciplinas" ToRole="mestab" />
+        </EntityType>
+        <EntityType Name="Editora">
+          <Key>
+            <PropertyRef Name="Editora1" />
+          </Key>
+          <Property Name="Editora1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="manuais" Relationship="Self.Editoras_manuais_FK1" FromRole="Editoras" ToRole="manuais" />
+        </EntityType>
+        <EntityType Name="Escalo">
+          <Key>
+            <PropertyRef Name="Escalao" />
+          </Key>
+          <Property Name="Escalao" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AnosEscolares" Relationship="Self.Escaloes_AnosEscolares_FK1" FromRole="Escaloes" ToRole="AnosEscolares" />
+        </EntityType>
+        <EntityType Name="estabelecimento">
+          <Key>
+            <PropertyRef Name="idestab" />
+          </Key>
+          <Property Name="idestab" Type="Int32" Nullable="false" />
+          <Property Name="design" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="morada" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="local" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CodAgrupamento" Type="Int32" />
+          <Property Name="Sede" Type="Boolean" />
+          <Property Name="cp4" Type="Int32" />
+          <Property Name="cp3" Type="Int32" />
+          <NavigationProperty Name="Agrupamento" Relationship="Self.Agrupamentos_estabelecimentos_FK1" FromRole="estabelecimentos" ToRole="Agrupamentos" />
+          <NavigationProperty Name="CPostal" Relationship="Self.CPostal_estabelecimentos_FK1" FromRole="estabelecimentos" ToRole="CPostal" />
+          <NavigationProperty Name="mestabs" Relationship="Self.estabelecimentos_mestab_FK1" FromRole="estabelecimentos" ToRole="mestab" />
+        </EntityType>
+        <EntityType Name="manuai">
+          <Key>
+            <PropertyRef Name="Editora" />
+            <PropertyRef Name="disciplina" />
+            <PropertyRef Name="idmanual" />
+          </Key>
+          <Property Name="Editora" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="disciplina" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idmanual" Type="Int32" Nullable="false" />
+          <Property Name="ISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="titulo" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Autores" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idAescolar" Type="Int32" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="idAEscola" Type="Int32" />
+          <Property Name="Inactivo" Type="Boolean" />
+          <NavigationProperty Name="AnosEscolare" Relationship="Self.AnosEscolares_manuais_FK1" FromRole="manuais" ToRole="AnosEscolares" />
+          <NavigationProperty Name="Disciplina1" Relationship="Self.Disciplinas_manuais_FK1" FromRole="manuais" ToRole="Disciplinas" />
+          <NavigationProperty Name="Editora1" Relationship="Self.Editoras_manuais_FK1" FromRole="manuais" ToRole="Editoras" />
+          <NavigationProperty Name="mestabs" Relationship="Self.manuais_mestab_FK1" FromRole="manuais" ToRole="mestab" />
+          <NavigationProperty Name="stocks" Relationship="Self.manuais_stock_FK1" FromRole="manuais" ToRole="stock" />
+        </EntityType>
+        <EntityType Name="Mensagen">
+          <Key>
+            <PropertyRef Name="IdMR" />
+          </Key>
+          <Property Name="IdMR" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Mensagem" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NickEnviado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lido" Type="Boolean" />
+          <NavigationProperty Name="user" Relationship="Self.users_Mensagens_FK1" FromRole="Mensagens" ToRole="users" />
+        </EntityType>
+        <EntityType Name="mestab">
+          <Key>
+            <PropertyRef Name="idMestab" />
+          </Key>
+          <Property Name="idMestab" Type="Int32" Nullable="false" />
+          <Property Name="Aletivo" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="idmanual" Type="Int32" />
+          <Property Name="idestab" Type="Int32" />
+          <Property Name="idaescola" Type="Int32" />
+          <Property Name="disciplina" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Editora" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ALetivo1" Relationship="Self.ALetivo_mestab_FK1" FromRole="mestab" ToRole="ALetivo" />
+          <NavigationProperty Name="AnosEscolare" Relationship="Self.AnosEscolares_mestab_FK1" FromRole="mestab" ToRole="AnosEscolares" />
+          <NavigationProperty Name="Disciplina1" Relationship="Self.Disciplinas_mestab_FK1" FromRole="mestab" ToRole="Disciplinas" />
+          <NavigationProperty Name="estabelecimento" Relationship="Self.estabelecimentos_mestab_FK1" FromRole="mestab" ToRole="estabelecimentos" />
+          <NavigationProperty Name="manuai" Relationship="Self.manuais_mestab_FK1" FromRole="mestab" ToRole="manuais" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="idStock" />
+          </Key>
+          <Property Name="idStock" Type="Int32" Nullable="false" />
+          <Property Name="idManual" Type="Int32" />
+          <Property Name="Qtt" Type="Int32" />
+          <Property Name="Nick" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="disciplina" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Editora" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="manuai" Relationship="Self.manuais_stock_FK1" FromRole="stock" ToRole="manuais" />
+          <NavigationProperty Name="user" Relationship="Self.users_stock_FK1" FromRole="stock" ToRole="users" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Nick" />
+          </Key>
+          <Property Name="Nick" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="nome" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="BLivro" Type="Boolean" />
+          <Property Name="cp4" Type="Int32" />
+          <Property Name="cp3" Type="Int32" />
+          <NavigationProperty Name="CPostal" Relationship="Self.CPostal_users_FK1" FromRole="users" ToRole="CPostal" />
+          <NavigationProperty Name="Mensagens" Relationship="Self.users_Mensagens_FK1" FromRole="users" ToRole="Mensagens" />
+          <NavigationProperty Name="stocks" Relationship="Self.users_stock_FK1" FromRole="users" ToRole="stock" />
+        </EntityType>
+        <Association Name="Agrupamentos_estabelecimentos_FK1">
+          <End Role="Agrupamentos" Type="Self.Agrupamento" Multiplicity="0..1" />
+          <End Role="estabelecimentos" Type="Self.estabelecimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agrupamentos">
+              <PropertyRef Name="Codagrupamento" />
+            </Principal>
+            <Dependent Role="estabelecimentos">
+              <PropertyRef Name="CodAgrupamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ALetivo_mestab_FK1">
+          <End Role="ALetivo" Type="Self.ALetivo" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALetivo">
+              <PropertyRef Name="Aletivo1" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="Aletivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AnosEscolares_manuais_FK1">
+          <End Role="AnosEscolares" Type="Self.AnosEscolare" Multiplicity="0..1" />
+          <End Role="manuais" Type="Self.manuai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnosEscolares">
+              <PropertyRef Name="idAEscola" />
+            </Principal>
+            <Dependent Role="manuais">
+              <PropertyRef Name="idAEscola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AnosEscolares_mestab_FK1">
+          <End Role="AnosEscolares" Type="Self.AnosEscolare" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnosEscolares">
+              <PropertyRef Name="idAEscola" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="idaescola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Escaloes_AnosEscolares_FK1">
+          <End Role="Escaloes" Type="Self.Escalo" Multiplicity="0..1" />
+          <End Role="AnosEscolares" Type="Self.AnosEscolare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escaloes">
+              <PropertyRef Name="Escalao" />
+            </Principal>
+            <Dependent Role="AnosEscolares">
+              <PropertyRef Name="Escalao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CPostal_estabelecimentos_FK1">
+          <End Role="CPostal" Type="Self.CPostal" Multiplicity="0..1" />
+          <End Role="estabelecimentos" Type="Self.estabelecimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CPostal">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Principal>
+            <Dependent Role="estabelecimentos">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CPostal_users_FK1">
+          <End Role="CPostal" Type="Self.CPostal" Multiplicity="0..1" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CPostal">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="cp4" />
+              <PropertyRef Name="cp3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Disciplinas_manuais_FK1">
+          <End Role="Disciplinas" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="manuais" Type="Self.manuai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplinas">
+              <PropertyRef Name="disciplina1" />
+            </Principal>
+            <Dependent Role="manuais">
+              <PropertyRef Name="disciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Disciplinas_mestab_FK1">
+          <End Role="Disciplinas" Type="Self.Disciplina" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplinas">
+              <PropertyRef Name="disciplina1" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="disciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Editoras_manuais_FK1">
+          <End Role="Editoras" Type="Self.Editora" Multiplicity="1" />
+          <End Role="manuais" Type="Self.manuai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editoras">
+              <PropertyRef Name="Editora1" />
+            </Principal>
+            <Dependent Role="manuais">
+              <PropertyRef Name="Editora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="estabelecimentos_mestab_FK1">
+          <End Role="estabelecimentos" Type="Self.estabelecimento" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estabelecimentos">
+              <PropertyRef Name="idestab" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="idestab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manuais_mestab_FK1">
+          <End Role="manuais" Type="Self.manuai" Multiplicity="0..1" />
+          <End Role="mestab" Type="Self.mestab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manuais">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idmanual" />
+            </Principal>
+            <Dependent Role="mestab">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idmanual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manuais_stock_FK1">
+          <End Role="manuais" Type="Self.manuai" Multiplicity="0..1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manuais">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idmanual" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="Editora" />
+              <PropertyRef Name="disciplina" />
+              <PropertyRef Name="idManual" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_Mensagens_FK1">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="Mensagens" Type="Self.Mensagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Nick" />
+            </Principal>
+            <Dependent Role="Mensagens">
+              <PropertyRef Name="Nickname" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_stock_FK1">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Nick" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="Nick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TrocaManuaisEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agrupamentos" EntityType="Self.Agrupamento" />
+          <EntitySet Name="ALetivoes" EntityType="Self.ALetivo" />
+          <EntitySet Name="AnosEscolares" EntityType="Self.AnosEscolare" />
+          <EntitySet Name="CPostals" EntityType="Self.CPostal" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplina" />
+          <EntitySet Name="Editoras" EntityType="Self.Editora" />
+          <EntitySet Name="Escaloes" EntityType="Self.Escalo" />
+          <EntitySet Name="estabelecimentos" EntityType="Self.estabelecimento" />
+          <EntitySet Name="manuais" EntityType="Self.manuai" />
+          <EntitySet Name="Mensagens" EntityType="Self.Mensagen" />
+          <EntitySet Name="mestabs" EntityType="Self.mestab" />
+          <EntitySet Name="stocks" EntityType="Self.stock" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="Agrupamentos_estabelecimentos_FK1" Association="Self.Agrupamentos_estabelecimentos_FK1">
+            <End Role="Agrupamentos" EntitySet="Agrupamentos" />
+            <End Role="estabelecimentos" EntitySet="estabelecimentos" />
+          </AssociationSet>
+          <AssociationSet Name="ALetivo_mestab_FK1" Association="Self.ALetivo_mestab_FK1">
+            <End Role="ALetivo" EntitySet="ALetivoes" />
+            <End Role="mestab" EntitySet="mestabs" />
+          </AssociationSet>
+          <AssociationSet Name="AnosEscolares_manuais_FK1" Association="Self.AnosEscolares_manuais_FK1">
+            <End Role="AnosEscolares" EntitySet="AnosEscolares" />
+            <End Role="manuais" EntitySet="manuais" />
+          </AssociationSet>
+          <AssociationSet Name="AnosEscolares_mestab_FK1" Association="Self.AnosEscolares_mestab_FK1">
+            <End Role="AnosEscolares" EntitySet="AnosEscolares" />
+            <End Role="mestab" EntitySet="mestabs" />
+          </AssociationSet>
+          <AssociationSet Name="Escaloes_AnosEscolares_FK1" Association="Self.Escaloes_AnosEscolares_FK1">
+            <End Role="Escaloes" EntitySet="Escaloes" />
+            <End Role="AnosEscolares" EntitySet="AnosEscolares" />
+          </AssociationSet>
+          <AssociationSet Name="CPostal_estabelecimentos_FK1" Association="Self.CPostal_estabelecimentos_FK1">
+            <End Role="CPostal" EntitySet="CPostals" />
+            <End Role="estabelecimentos" EntitySet="estabelecimentos" />
+          </AssociationSet>
+          <AssociationSet Name="CPostal_users_FK1" Association="Self.CPostal_users_FK1">
+            <End Role="CPostal" EntitySet="CPostals" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="Disciplinas_manuais_FK1" Association="Self.Disciplinas_manuais_FK1">
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+            <End Role="manuais" EntitySet="manuais" />
+          </AssociationSet>
+          <AssociationSet Name="Disciplinas_mestab_FK1" Association="Self.Disciplinas_mestab_FK1">
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+            <End Role="mestab" EntitySet="mestabs" />
+          </AssociationSet>
+          <AssociationSet Name="Editoras_manuais_FK1" Association="Self.Editoras_manuais_FK1">
+            <End Role="Editoras" EntitySet="Editoras" />
+            <End Role="manuais" EntitySet="manuais" />
+          </AssociationSet>
+          <AssociationSet Name="estabelecimentos_mestab_FK1" Association="Self.estabelecimentos_mestab_FK1">
+            <End Role="estabelecimentos" EntitySet="estabelecimentos" />
+            <End Role="mestab" EntitySet="mestabs" />
+          </AssociationSet>
+          <AssociationSet Name="manuais_mestab_FK1" Association="Self.manuais_mestab_FK1">
+            <End Role="manuais" EntitySet="manuais" />
+            <End Role="mestab" EntitySet="mestabs" />
+          </AssociationSet>
+          <AssociationSet Name="manuais_stock_FK1" Association="Self.manuais_stock_FK1">
+            <End Role="manuais" EntitySet="manuais" />
+            <End Role="stock" EntitySet="stocks" />
+          </AssociationSet>
+          <AssociationSet Name="users_Mensagens_FK1" Association="Self.users_Mensagens_FK1">
+            <End Role="users" EntitySet="users" />
+            <End Role="Mensagens" EntitySet="Mensagens" />
+          </AssociationSet>
+          <AssociationSet Name="users_stock_FK1" Association="Self.users_stock_FK1">
+            <End Role="users" EntitySet="users" />
+            <End Role="stock" EntitySet="stocks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TrocaManuaisModelStoreContainer" CdmEntityContainer="TrocaManuaisEntities">
+          <EntitySetMapping Name="Agrupamentos">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.Agrupamento">
+              <MappingFragment StoreEntitySet="Agrupamentos">
+                <ScalarProperty Name="Codagrupamento" ColumnName="Codagrupamento" />
+                <ScalarProperty Name="agrupamento1" ColumnName="agrupamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALetivoes">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.ALetivo">
+              <MappingFragment StoreEntitySet="ALetivo">
+                <ScalarProperty Name="Aletivo1" ColumnName="Aletivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnosEscolares">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.AnosEscolare">
+              <MappingFragment StoreEntitySet="AnosEscolares">
+                <ScalarProperty Name="Escalao" ColumnName="Escalao" />
+                <ScalarProperty Name="idAEscola" ColumnName="idAEscola" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPostals">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.CPostal">
+              <MappingFragment StoreEntitySet="CPostal">
+                <ScalarProperty Name="cp4" ColumnName="cp4" />
+                <ScalarProperty Name="cp3" ColumnName="cp3" />
+                <ScalarProperty Name="Freguesia" ColumnName="Freguesia" />
+                <ScalarProperty Name="Concelho" ColumnName="Concelho" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplinas">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.Disciplina">
+              <MappingFragment StoreEntitySet="Disciplinas">
+                <ScalarProperty Name="disciplina1" ColumnName="disciplina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editoras">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.Editora">
+              <MappingFragment StoreEntitySet="Editoras">
+                <ScalarProperty Name="Editora1" ColumnName="Editora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escaloes">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.Escalo">
+              <MappingFragment StoreEntitySet="Escaloes">
+                <ScalarProperty Name="Escalao" ColumnName="Escalao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estabelecimentos">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.estabelecimento">
+              <MappingFragment StoreEntitySet="estabelecimentos">
+                <ScalarProperty Name="idestab" ColumnName="idestab" />
+                <ScalarProperty Name="design" ColumnName="design" />
+                <ScalarProperty Name="morada" ColumnName="morada" />
+                <ScalarProperty Name="local" ColumnName="local" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="CodAgrupamento" ColumnName="CodAgrupamento" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
+                <ScalarProperty Name="cp4" ColumnName="cp4" />
+                <ScalarProperty Name="cp3" ColumnName="cp3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manuais">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.manuai">
+              <MappingFragment StoreEntitySet="manuais">
+                <ScalarProperty Name="Editora" ColumnName="Editora" />
+                <ScalarProperty Name="disciplina" ColumnName="disciplina" />
+                <ScalarProperty Name="idmanual" ColumnName="idmanual" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="Autores" ColumnName="Autores" />
+                <ScalarProperty Name="idAescolar" ColumnName="idAescolar" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="idAEscola" ColumnName="idAEscola" />
+                <ScalarProperty Name="Inactivo" ColumnName="Inactivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mensagens">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.Mensagen">
+              <MappingFragment StoreEntitySet="Mensagens">
+                <ScalarProperty Name="IdMR" ColumnName="IdMR" />
+                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="NickEnviado" ColumnName="NickEnviado" />
+                <ScalarProperty Name="Lido" ColumnName="Lido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mestabs">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.mestab">
+              <MappingFragment StoreEntitySet="mestab">
+                <ScalarProperty Name="idMestab" ColumnName="idMestab" />
+                <ScalarProperty Name="Aletivo" ColumnName="Aletivo" />
+                <ScalarProperty Name="idmanual" ColumnName="idmanual" />
+                <ScalarProperty Name="idestab" ColumnName="idestab" />
+                <ScalarProperty Name="idaescola" ColumnName="idaescola" />
+                <ScalarProperty Name="disciplina" ColumnName="disciplina" />
+                <ScalarProperty Name="Editora" ColumnName="Editora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stocks">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.stock">
+              <MappingFragment StoreEntitySet="stock">
+                <ScalarProperty Name="idStock" ColumnName="idStock" />
+                <ScalarProperty Name="idManual" ColumnName="idManual" />
+                <ScalarProperty Name="Qtt" ColumnName="Qtt" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="disciplina" ColumnName="disciplina" />
+                <ScalarProperty Name="Editora" ColumnName="Editora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="TrocaManuaisModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="BLivro" ColumnName="BLivro" />
+                <ScalarProperty Name="cp4" ColumnName="cp4" />
+                <ScalarProperty Name="cp3" ColumnName="cp3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.manuais>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;  
+@using PagedList;
+
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Catalogo de Manuais Escolares</h2>
+
+@using (Html.BeginForm())
+{
+    <table class="gallery">
+        <tr>
+            @{int crow = 1;
+              
+    foreach (var item in Model)
+    {
+        <td >
+            <ul>
+                <p>
+                    <a href="@Url.Content(item.foto)">
+                        <img src="@Url.Content(item.foto)" alt="Image" height="300" width="200" />
+                    </a>
+                </p>
+
+                <p>
+                    ISBN       :
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </p>
+                <p>
+                    TITULO     :
+                    @Html.DisplayFor(modelItem => item.titulo)
+                </p>
+                <p>
+                    ANO        : 
+                    @Html.DisplayFor(modelItem => item.AnosEscolares.Ano)
+                </p>
+                <p>
+                    DISCIPLINA :
+                    @Html.DisplayFor(modelItem => item.Disciplinas.disciplina)
+                </p>
+                <p>
+                    EDITORA    :
+                    @Html.DisplayFor(modelItem => item.Editoras.Editora)
+                </p>
+                <p>
+                    @Html.ActionLink("Detalhes do Manual", "Details", new { id = item.idmanual })
+                </p>
+             </ul>
+</td>
+        if (crow % 4 == 0)
+        {
+        <tr>
+            <td></td>
+        </tr>
+        }
+        crow++;
+    }
+            }
+           
+  </table>
+}
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Catalogo", new { page = page, foo = "bar" }))

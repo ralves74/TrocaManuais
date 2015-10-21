@@ -1,0 +1,132 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.ManuaisEstabelecimentos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+<script>
+    $('#agrup').on('change',function()
+    {
+        var AgrupId = $(this).val();
+        var CatalogoEstabelecimentosUrl = document.getElementById("CatalogoEstabelecimentos").value;
+        if (CatalogoEstabelecimentosUrl == "") CatalogoEstabelecimentosUrl = "~/catalogo/catalogoestabelecimentos";
+        $.when(loadEstabDropDown(AgrupId)
+            .done(function(){
+                console.log('Informação carregada com sucesso.');
+            })
+            .fail(function(){
+                console.log('Não foi possivel carregar a informação. Por Favor seleccione correctamente');
+            }));
+    });
+    function loadEstabDropDown(AgrupId)
+    {
+        $.getJSON('@Url.Action("LoadEstabs","Catalogo")', { AgrupId: AgrupId },function (response){
+            $('#estab').empty();
+            $('#estab').append($('<option>',{value:'',text:'Escolha o estabelecimento'}));
+            $.each(response,function(key,value){
+                $("#estab").append($('</option><option>'),{
+                    value:value.Value,
+                    text:value.text
+                });
+            });
+        });
+    }
+    </option>
+</script>
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Catalogo de Manuais Escolares Adotados</h2>
+<div class="container">
+    @using (Html.BeginForm("CatalogoEstabelecimentos", "Catalogo", FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        Estabelecimento
+                        <div class="col-md-11">
+                            @Html.DropDownList("estab", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        Ano
+                        <div class="col-md-12">
+                          @Html.DropDownList("Anol", null, htmlAttributes: new { @class = "form-control" })  
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-11">
+                            <p> </p>
+                            <input type="submit" value="Pesquisa" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+    <hr size="1" >
+    <table class="gallery">
+        <tr>
+            @{int crow = 1;
+
+            foreach (var item in Model)
+            {
+                <td>
+                    <ul>
+                        <p>
+                            <a href="@Url.Content(item.foto)">
+                                <img src="@Url.Content(item.foto)" alt="Image" height="300" width="200" />
+                            </a>
+                        </p>
+
+                        <p>
+                            @Html.DisplayNameFor(model => model.isbn)
+                            @Html.DisplayFor(modelItem => item.isbn)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.titulo)
+                            @Html.DisplayFor(modelItem => item.titulo)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.Ano)
+                            @Html.DisplayFor(modelItem => item.Ano)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.disciplina)
+                            @Html.DisplayFor(modelItem => item.disciplina)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.Editora)
+                            @Html.DisplayFor(modelItem => item.Editora)
+                        </p>
+                        <p>
+                            @Html.ActionLink("Detalhes do Manual", "Detalhes", new { id = item.idmanual })
+                        </p>
+                        <p>
+                            @Html.ActionLink("Procura", "CatalogoManuaisStock","Catalogo",null, new { id = item.idmanual })
+                        </p>
+                    </ul>
+                </td>
+                if (crow % 4 == 0)
+                {
+                <tr>
+                    <td></td>
+                </tr>
+                }
+                crow++;
+            }
+            }
+
+        </table>
+    </div>
+
+    @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("CatalogoPorAno", new { page = page, foo = "bar" }))
+
+

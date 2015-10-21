@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.manuais>
+
+@{
+    ViewBag.Title = "Catalogo Geral de Manuais";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using GridMvc.Html
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.customwidgets.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.js")"></script>
+<h2>Lista Geral de Manuais</h2>
+
+<p>
+    <button class="medium green" onclick="location.href='@Url.Action("Create","Manuais")'"><i class="icon-save"> Inserir Novo Manual</i></button>
+</p>
+@Html.Grid(Model).Columns(columns =>
+                    {
+                        columns.Add(c => c.ISBN).Titled("ISBN").Sortable(true);
+                        columns.Add(c => c.titulo).Titled("Titulo");
+                        columns.Add(c => c.AnosEscolares.Ano).Titled("Ano");
+                        columns.Add(c => c.Editora).Titled("Editora").Filterable(true).Sortable(true).SetInitialFilter(GridMvc.Filtering.GridFilterType.StartsWith, "a"); 
+                        columns.Add(c => c.disciplina).Titled("Disciplina").Filterable(true).Sortable(true);
+                        columns.Add().Encoded(false).Sanitized(false).SetWidth(30)
+                            .RenderValueAs(d => @<b>@Html.ActionLink("Detalhes", "Details", new { id = d.idmanual })</b>);
+                    }).WithPaging(20).Sortable().Filterable().WithMultipleFilters()

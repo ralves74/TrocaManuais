@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Trocamanuais" Class="EstabDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SWNB\SQL;Initial Catalog=Trocamanuais;Persist Security Info=True;User ID=sa;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TrocamanuaisConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.estabelecimentos" Member="estabelecimentos">
+    <Type Name="estabelecimento">
+      <Column Name="idestab" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="design" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="morada" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="local" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="telefone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="fax" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CodAgrupamento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sede" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="cp4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cp3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Agrupamento_estabelecimento" Member="Agrupamento" ThisKey="CodAgrupamento" OtherKey="Codagrupamento" Type="Agrupamento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Agrupamentos" Member="Agrupamentos">
+    <Type Name="Agrupamento">
+      <Column Name="Codagrupamento" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="agrupamento" Member="agrupamento1" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Association Name="Agrupamento_estabelecimento" Member="estabelecimentos" ThisKey="Codagrupamento" OtherKey="CodAgrupamento" Type="estabelecimento" />
+    </Type>
+  </Table>
+</Database>

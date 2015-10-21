@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.Alertas>
+
+@{
+    ViewBag.Title = "Index";
+   }
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manuais.Editora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.users.email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manuais.Editora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users.email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdAlerta }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdAlerta }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdAlerta })
+        </td>
+    </tr>
+}
+
+</table>

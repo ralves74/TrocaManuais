@@ -1,0 +1,97 @@
+﻿@model TrocaManuais.Web.Models.estabelecimentos
+
+@{
+    ViewBag.Title = "Informação Individual de Estabelecimento";
+}
+
+    <h2>Informação Individual de Estabelecimento</h2>
+
+    <div>
+        <dl class="dl-horizontal">
+            
+                <dt>
+                    Designação 
+                </dt>
+           
+                <dd>
+                    @Html.DisplayFor(model => model.design)
+                </dd>
+
+                <dt>
+                    Morada
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.morada)
+                </dd>
+
+                <dt>
+                    Localidade
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.local)
+                </dd>
+
+                <dt>
+                    Contacto Telefonico
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.telefone)
+                </dd>
+
+                <dt>
+                    Nº Fax
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fax)
+                </dd>
+
+                <dt>
+                    Email Geral
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    Homepage
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.url)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sede)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sede)
+                </dd>
+
+                <dt>
+                    Agrupamento
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Agrupamentos.agrupamento)
+                </dd>
+
+                <dt>
+                    Freguesia
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CPostal.Freguesia)
+                </dd>
+
+</dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+

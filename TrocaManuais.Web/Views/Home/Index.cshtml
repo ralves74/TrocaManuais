@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+    <div class="jumbotron">
+        <h1><img src="~/content/img/recicla.png" /> Troca de Manuais Escolares</h1>
+    </div>
+    <div class="container">
+
+        <div class="col_3">
+            <a href=@Url.Action("CatalogoPorAno", "Catalogo", new { EscalaoEscola = "1º Ciclo" })><img src="~\content/img/1_ciclo.png" height="200" width="200" />
+            <h2>1º Ciclo</h2></a>
+        </div>
+        <div class="col_3">
+            <a href=@Url.Action("CatalogoPorAno", "Catalogo", new { EscalaoEscola = "2º Ciclo" })>
+                <img src="~\content/img/2_ciclo.png" height="200" width="200" />
+                <h2>2º Ciclo</h2>
+            </a>
+        </div>
+
+        <div class="col_3">
+            <a href=@Url.Action("CatalogoPorAno", "Catalogo", new { EscalaoEscola = "3º Ciclo" })>
+                <img src="~\content/img/3_ciclo.png" height="200" width="200" />
+                <h2>3º Ciclo</h2>
+            </a>
+</div>
+        <div class="col_3">
+            <a href=@Url.Action("CatalogoPorAno", "Catalogo", new { EscalaoEscola = "Secundário" })>
+    <img src="~\content/img/Secundario.png" height="200" width="200" />
+    <h2>Secundário</h2>
+</a>
+</div>
+    </div>
+
+

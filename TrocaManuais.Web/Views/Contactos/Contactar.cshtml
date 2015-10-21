@@ -1,0 +1,67 @@
+﻿@model TrocaManuais.Web.Models.ContactarViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row">
+            <div class="span4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.foto)
+                </dt>
+                <dd>
+                    <a href="@Url.Content(Model.foto)"><img src="@Url.Content(Model.foto)" alt="Image" height="400" width="200" /></a>
+                </dd>
+
+            </div>
+            <div class="span4">
+                <dt>
+                    ISBN
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ISBN)
+                </dd>
+                <dt>
+                    Autores
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Autores)
+                </dd>
+                <dt>
+                    Ano
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AnosEscolares.Ano)
+                </dd>
+
+                <dt>
+                    Disciplina
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Disciplinas.disciplina)
+                </dd>
+
+                <dt>
+                    Editora
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Editoras.Editora)
+                </dd>
+            </div>
+        </div>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47f94c195a2941b6a2467d157fe3ae45" Name="Diagram1">
+        <EntityTypeShape EntityType="TrocamanuaisModel.Agrupamentos" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.Alertas" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.ALetivo" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.AnosEscolares" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.CPostal" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.Disciplinas" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.Editoras" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.Escaloes" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.estabelecimentos" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.manuais" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.Mensagens" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.mestab" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.stock" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.users" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="TrocamanuaisModel.Agrupamentos_estabelecimentos_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.manuais_Alertas_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.users_Alertas_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.ALetivo_mestab_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.AnosEscolares_manuais_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.AnosEscolares_mestab_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.Escaloes_AnosEscolares_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.CPostal_estabelecimentos_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.CPostal_users_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.Disciplinas_manuais_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.Disciplinas_mestab_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.Editoras_manuais_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.estabelecimentos_mestab_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.manuais_mestab_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.manuais_stock_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.users_Mensagens_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrocamanuaisModel.users_stock_FK1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.TodosManuais" Width="1.5" PointX="8.375" PointY="8.75" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.ManuaisEstabelecimentos" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TrocamanuaisModel.ManuaisEmStock" Width="1.5" PointX="10.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

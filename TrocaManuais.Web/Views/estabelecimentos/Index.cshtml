@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.estabelecimentos>
+
+@{
+    ViewBag.Title = "Lista Geral de Estabelecimentos de Ensino";
+}
+@using GridMvc.Html
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.customwidgets.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.js")"></script>
+<h2>Lista Geral de Estabelecimentos de Ensino</h2>
+
+@Html.Grid(Model).Columns(columns =>
+                    {
+                        columns.Add(c => c.Agrupamentos.agrupamento).Titled("Agrupamento").Sortable(true);
+                        columns.Add(c => c.design).Titled("Estabelecimento");
+                        columns.Add(c => c.local).Titled("Freguesia");
+                        columns.Add().Encoded(false).Sanitized(false).SetWidth(30)
+                            .RenderValueAs(d => @<b>@Html.ActionLink("Detalhes", "Details", new { id = d.idestab})</b>);
+                    }).WithPaging(20).Sortable().Filterable().WithMultipleFilters()

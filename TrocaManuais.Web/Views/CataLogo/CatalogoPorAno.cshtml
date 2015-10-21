@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TrocaManuais.Web.Models.TodosManuais>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Catalogo de Manuais Escolares</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <table class="gallery">
+        <tr>
+            @{int crow = 1;
+
+            foreach (var item in Model)
+            {
+                <td>
+                    <ul>
+                        <p>
+                            <a href="@Url.Content(item.foto)">
+                                <img src="@Url.Content(item.foto)" alt="Image" height="245" width="200" />
+                            </a>
+                        </p>
+
+                        <p>
+                            @Html.DisplayNameFor(model => model.ISBN)
+                            @Html.DisplayFor(modelItem => item.ISBN)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.titulo)
+                            @Html.DisplayFor(modelItem => item.titulo)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.ano)
+                            @Html.DisplayFor(modelItem => item.ano)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.disciplina)
+                            @Html.DisplayFor(modelItem => item.disciplina)
+                        </p>
+                        <p>
+                            @Html.DisplayNameFor(model => model.editora)
+                            @Html.DisplayFor(modelItem => item.editora)
+                        </p>
+                        <p>
+                            @Html.ActionLink("Detalhes do Manual", "Detalhes", new { id = item.idmanual })
+                        </p>
+                    </ul>
+                </td>
+                if (crow % 4 == 0)
+                {
+                <tr>
+                    <td></td>
+                </tr>
+                }
+                crow++;
+            }
+            }
+
+        </table>
+}
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("CatalogoPorAno", new { page = page, foo = "bar" }))
